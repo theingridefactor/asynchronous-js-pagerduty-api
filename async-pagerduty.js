@@ -59,5 +59,3 @@ const getPagerdutyEscalPolicy = (id) => {
       });
 }
 
-//listPagerdutyTeams();
-
