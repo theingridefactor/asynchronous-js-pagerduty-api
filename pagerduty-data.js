@@ -1,8 +1,8 @@
 require("dotenv").config();
 
 const fetch = require("node-fetch");
-var $ = require("jquery");
 
+const pdApiUrl = "https://api.pagerduty.com";
 const pdapiToken = process.env.PD_API_TOKEN;
 
 const data = {
@@ -26,8 +26,6 @@ const myCustomOptions = {
   },
   body: JSON.stringify(data),
 };
-
-const pdApiUrl = "https://api.pagerduty.com";
 
 const myPromise = fetch(`${pdApiUrl}/teams`, myCustomOptions);
 
