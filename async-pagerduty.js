@@ -57,8 +57,7 @@ const getPagerdutyEscalPolicy = (id) => {
   });
 };
 
-
-// Try the API calls
+// Example API calls
 listPagerdutyTeams();
 getPagerdutyEscalPolicy("PEHGOGO");
 
