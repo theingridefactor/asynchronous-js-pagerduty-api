@@ -1,6 +1,8 @@
 require("dotenv").config();
 
 const fetch = require("node-fetch");
+
+const pdApiUrl = "https://api.pagerduty.com";
 const pdapiToken = process.env.PD_API_TOKEN;
 
 const devData = require("./fake-data.js");
@@ -12,8 +14,6 @@ var defaultOptions = {
     Authorization: `Token token=${pdapiToken}`,
   },
 };
-
-var pdApiUrl = "https://api.pagerduty.com";
 
 var success = "Request succeeded with JSON response";
 
