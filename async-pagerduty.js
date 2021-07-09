@@ -3,7 +3,7 @@ require("dotenv").config();
 const fetch = require("node-fetch");
 const pdapiToken = process.env.PD_API_TOKEN;
 
-const devData = require("./fake-dev-data.js");
+const devData = require("./fake-data.js");
 
 var defaultOptions = {
   headers: {
@@ -12,6 +12,8 @@ var defaultOptions = {
     Authorization: `Token token=${pdapiToken}`,
   },
 };
+
+var pdApiUrl = "https://api.pagerduty.com";
 
 var success = "Request succeeded with JSON response";
 
@@ -33,7 +35,7 @@ const logResult = (response, myLogger) => {
 const createPagerdutyService = () => {
   var options = defaultOptions;
   options.method = "POST";
-  var url = `https://api.pagerduty.com/services`;
+  var url = `${pdApiUrl}/services`;
 
   devData.services.forEach((entry) => {
     options.body = JSON.stringify(entry);
@@ -44,18 +46,18 @@ const createPagerdutyService = () => {
 };
 
 const listPagerdutyTeams = () => {
-  var url = `https://api.pagerduty.com/teams?total=false`;
+  var url = `${pdApiUrl}/teams?total=false`;
   sendApiRequest(url, defaultOptions, (response) => {
     console.log(success, response);
   });
 };
 
 const getPagerdutyEscalPolicy = (id) => {
-    var url = `https://api.pagerduty.com/escalation_policies/${id}`;
+    var url = `${pdApiUrl}/escalation_policies/${id}`;
     sendApiRequest(url, defaultOptions, (response) => {
         console.log(success, response.escalation_policy);
       });
 }
 
-//listPagerdutyTeams();
+listPagerdutyTeams();
 getPagerdutyEscalPolicy('PEHGOGO');
