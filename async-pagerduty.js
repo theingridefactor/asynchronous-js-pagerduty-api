@@ -13,35 +13,49 @@ var defaultOptions = {
   },
 };
 
-const sendApiRequest = (url, options, funcLogResult) => {
+var success = "Request succeeded with JSON response";
+
+const sendApiRequest = (url, options, myLogger) => {
   const myPromise = fetch(url, options);
   myPromise
     .then((response) => response.json())
-    .then((data) => funcLogResult(data))
+    .then((data) => logResult(data, myLogger))
     .catch((error) => console.log("Request failed", error));
 };
 
-const logResult = (response) => {
+const logResult = (response, myLogger) => {
   if (response.error != null) {
     throw new Error(response.error);
   }
-  console.log("Request succeeded with JSON response", response);
+  myLogger(response);
 };
 
 const createPagerdutyService = () => {
-  options = defaultOptions;
+  var options = defaultOptions;
   options.method = "POST";
   var url = `https://api.pagerduty.com/services`;
 
   devData.services.forEach((entry) => {
     options.body = JSON.stringify(entry);
-    sendApiRequest(url, options, logResult);
+    sendApiRequest(url, options, (response) => {
+      console.log(success, response);
+    });
   });
 };
 
 const listPagerdutyTeams = () => {
   var url = `https://api.pagerduty.com/teams?total=false`;
-  sendApiRequest(url, defaultOptions, logResult);
+  sendApiRequest(url, defaultOptions, (response) => {
+    console.log(success, response);
+  });
 };
 
-listPagerdutyTeams();
+const getPagerdutyEscalPolicy = (id) => {
+    var url = `https://api.pagerduty.com/escalation_policies/${id}`;
+    sendApiRequest(url, defaultOptions, (response) => {
+        console.log(success, response.escalation_policy);
+      });
+}
+
+//listPagerdutyTeams();
+getPagerdutyEscalPolicy('PEHGOGO');
