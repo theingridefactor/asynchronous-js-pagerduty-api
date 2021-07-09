@@ -1,4 +1,4 @@
-// Enter fake data here
+// Enter fake dev data here
 const services = [];
 
 module.exports = { services };
