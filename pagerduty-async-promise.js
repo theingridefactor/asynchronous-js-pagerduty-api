@@ -13,7 +13,9 @@ const myCustomOptions = {
   },
 };
 
-fetch(`${pdApiUrl}/teams?total=false`, myCustomOptions)
+const myPromise = fetch(`${pdApiUrl}/teams?total=false`, myCustomOptions);
+
+myPromise
   .then((response) => response.json())
   .then((data) => {
     console.log("Request succeeded with JSON response", data);
