@@ -20,8 +20,8 @@ function logData(data) {
 
 loadCountryDataWithCallback(logData);
 
-// GET data asynchronously with promise
-function loadCountryDataWithPromise() {
+// GET data asynchronously, no callback
+function loadCountryData() {
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -30,7 +30,7 @@ function loadCountryDataWithPromise() {
     return response;    
 }
 
-loadCountryDataWithPromise().then(response => response.text())
+loadCountryData().then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error))
   .finally(console.log('DONE'));
