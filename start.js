@@ -10,7 +10,7 @@ function loadCountryDataWithCallback(callback) {
         method: 'GET',
         redirect: 'follow'
     };
-    let response = fetch(`${apiURL}/v2/countries?key=${process.env.API_KEY}`, requestOptions);
+    const response = fetch(`${apiURL}/v2/countries?key=${process.env.API_KEY}`, requestOptions);
  
     callback(response, function(data){
         console.log(data);
@@ -36,7 +36,7 @@ function loadCountryData() {
         method: 'GET',
         redirect: 'follow'
     };
-    let response = fetch(`${apiURL}/v2/countries?key=${process.env.API_KEY}`, requestOptions);
+    const response = fetch(`${apiURL}/v2/countries?key=${process.env.API_KEY}`, requestOptions);
     return response;    
 }
 
