@@ -60,5 +60,4 @@ const getPagerdutyEscalPolicy = (id) => {
 }
 
 listPagerdutyTeams();
-//getPagerdutyEscalPolicy('some-id');
 
