@@ -15,8 +15,6 @@ var defaultOptions = {
   },
 };
 
-var success = "Request succeeded with JSON response";
-
 const sendApiRequest = (url, options, myLogger) => {
   const myPromise = fetch(url, options);
   myPromise
@@ -29,7 +27,7 @@ const logResult = (response, myLogger) => {
   if (response.error != null) {
     throw new Error(response.error);
   }
-  myLogger(response);
+  myLogger("Request succeeded with JSON response", response);
 };
 
 const createPagerdutyService = () => {
@@ -39,23 +37,28 @@ const createPagerdutyService = () => {
 
   devData.services.forEach((entry) => {
     options.body = JSON.stringify(entry);
-    sendApiRequest(url, options, (response) => {
-      console.log(success, response);
+    sendApiRequest(url, options, (msg, response) => {
+      console.log(msg, response);
     });
   });
 };
 
 const listPagerdutyTeams = () => {
   var url = `${pdApiUrl}/teams?total=false`;
-  sendApiRequest(url, defaultOptions, (response) => {
-    console.log(success, response);
+  sendApiRequest(url, defaultOptions, (msg, response) => {
+    console.log(msg, response);
   });
 };
 
 const getPagerdutyEscalPolicy = (id) => {
-    var url = `${pdApiUrl}/escalation_policies/${id}`;
-    sendApiRequest(url, defaultOptions, (response) => {
-        console.log(success, response.escalation_policy);
-      });
-}
+  var url = `${pdApiUrl}/escalation_policies/${id}`;
+  sendApiRequest(url, defaultOptions, (msg, response) => {
+    console.log(msg, response.escalation_policy);
+  });
+};
+
+
+// Example calls
+listPagerdutyTeams();
+getPagerdutyEscalPolicy("PEHGOGO");
 
