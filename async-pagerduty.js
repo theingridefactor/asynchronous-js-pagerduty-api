@@ -60,4 +60,5 @@ const getPagerdutyEscalPolicy = (id) => {
 }
 
 listPagerdutyTeams();
-getPagerdutyEscalPolicy('PEHGOGO');
+//getPagerdutyEscalPolicy('some-id');
+
