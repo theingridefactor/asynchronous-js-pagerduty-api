@@ -5,7 +5,7 @@ Learn to make asynchronous calls to any API using JavaScript.
 ## Part 1 - Callback vs. Promise
 In `start.js`, the Air Visual API is used make one API call using a callback function, and another call using a promise.
 
-1. Go to the IQAir site (iqair.com) and make a free community account. Then log in and generate an API key. Copy the key onto your clipboard.
+1. Go to the [IQAir site](https://www.iqair.com/) and create an account. You can get a community account for free. Log in and generate an API key. Copy this key onto your clipboard.
 
 2. Open up your project code and create a `.env` file. Here you can store credentials as environment variables, rather than having them visible directly in the code. Create an environment variable for your API key (do not use quotation marks):
 `AIR_API_KEY=[enter-here]`
