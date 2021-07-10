@@ -27,8 +27,10 @@ const logResult = (response, myLogger) => {
   if (response.error != null) {
     throw new Error(response.error);
   }
-  myLogger("Request succeeded with JSON response", response);
+  myLogger(response);
 };
+
+var success = "Request succeeded with JSON response";
 
 const createPagerdutyService = () => {
   var options = defaultOptions;
@@ -37,23 +39,23 @@ const createPagerdutyService = () => {
 
   devData.services.forEach((entry) => {
     options.body = JSON.stringify(entry);
-    sendApiRequest(url, options, (msg, response) => {
-      console.log(msg, response);
+    sendApiRequest(url, options, (response) => {
+      console.log(success, response);
     });
   });
 };
 
 const listPagerdutyTeams = () => {
   var url = `${pdApiUrl}/teams?total=false`;
-  sendApiRequest(url, defaultOptions, (msg, response) => {
-    console.log(msg, response);
+  sendApiRequest(url, defaultOptions, (response) => {
+    console.log(success, response);
   });
 };
 
 const getPagerdutyEscalPolicy = (id) => {
   var url = `${pdApiUrl}/escalation_policies/${id}`;
-  sendApiRequest(url, defaultOptions, (msg, response) => {
-    console.log(msg, response.escalation_policy);
+  sendApiRequest(url, defaultOptions, (response) => {
+    console.log(success, response.escalation_policy);
   });
 };
 
