@@ -23,14 +23,14 @@ const sendApiRequest = (url, options, myLogger) => {
     .catch((error) => console.log("Request failed", error));
 };
 
+var success = "Request succeeded with JSON response";
+
 const logResult = (response, myLogger) => {
   if (response.error != null) {
     throw new Error(response.error);
   }
   myLogger(response);
 };
-
-var success = "Request succeeded with JSON response";
 
 const createPagerdutyService = () => {
   var options = defaultOptions;
