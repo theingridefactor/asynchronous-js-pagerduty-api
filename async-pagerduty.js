@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 const pdApiUrl = "https://api.pagerduty.com";
 const pdapiToken = process.env.PD_API_TOKEN;
 
-const devData = require("./fake-data.js");
+const devData = require("./dev-data.js");
 
 var defaultOptions = {
   headers: {
