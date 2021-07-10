@@ -7,10 +7,10 @@ In `start.js`, the Air Visual API is used make one API call using a callback fun
 
 1. Go to [IQAir.com](https://www.iqair.com/) and create an account. You can get a community account for free. Log in and generate an API key. Copy this key onto your clipboard.
 
-2. Open up your project codebase and create a `.env` file. Here you can store credentials as environment variables, rather than having them visible directly in the code. Create an environment variable for your API key (do not use quotation marks):
+2. Open your project codebase and create a `.env` file. Here you can store credentials as environment variables, rather than having them visible directly in the code. Create an environment variable for your API key (do not use quotation marks):
 `AIR_API_KEY=[enter-here]`
 
-3. In `start.js`, configure environment variables: `require("dotenv").config()`. You can access your key as follows: `process.env.<enter-name-here>`
+3. In `start.js`, configure environment variables by including: `require("dotenv").config()`. It is possible to access your key as follows: `process.env.<enter-name-here>`
 
 4. Use the Fetch API to make requests: `npm install node-fetch`
 
