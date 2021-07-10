@@ -16,4 +16,4 @@ In `start.js`, the Air Visual API is used make one API call using a callback fun
 
 5. Back at the API dashboard, check out the documentation for the Air Visual API. Go to the Version 2 section and look at example requests/ responses. The first one is a GET request to list supported countries.
 
-6. To make a call using your API key, first copy the API URL provided in the documentation and replace `{{YOUR_API_KEY}}` with `process.env.AIR_API_KEY`.
+6. To make a call using your API key, copy the API URL provided in the documentation and replace `{{YOUR_API_KEY}}` with `process.env.AIR_API_KEY`.
