@@ -12,14 +12,12 @@ async function loadCountryDataWithCallback(callback) {
     };
     let response = await fetch(`${apiURL}/v2/countries?key=${process.env.API_KEY}`, requestOptions);
  
-    callback(response, function(result){
-        console.log(result);
-    }, function(e) {
+    callback(response, function(e) {
         console.log(e);
     });      
 }
 
-async function callbackFunc(response, callback, failureCallback) {
+async function callbackFunc(response, failureCallback) {
     //console.log(response);
     if (!response.ok) {
         failureCallback(response.error);
