@@ -12,19 +12,17 @@ function loadCountryDataWithCallback(callback) {
     };
     const response = fetch(`${apiURL}/v2/countries?key=${process.env.API_KEY}`, requestOptions);
  
-    callback(response, function(data){
-        console.log(data);
-    }, function(e) {
+    callback(response, function(e) {
         console.log(e);
     });      
 }
 
-function callbackFunc(response, callback, failureCallback) {
+function callbackFunc(response, failureCallback) {
     if (!response.ok) {
         failureCallback(response.error);
     }
     else {
-        callback(response.text());
+        console.log(response.text());
     }
 }
 
