@@ -26,7 +26,7 @@ async function callbackFunc(response, callback, failureCallback) {
     }
     else {
         let text = await response.text();
-        callback(text);
+        console.log(text);
     }
 }
 
