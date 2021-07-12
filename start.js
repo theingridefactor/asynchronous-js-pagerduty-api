@@ -22,7 +22,8 @@ function callbackFunc(response, failureCallback) {
         failureCallback(response.error);
     }
     else {
-        console.log(response.text());
+        const result = response.text();
+        console.log(result);
     }
 }
 
