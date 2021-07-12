@@ -5,25 +5,28 @@ const fetch = require('node-fetch');
 var apiURL = "http://api.airvisual.com";
 
 // Get data asynchronously with callback
-function loadCountryDataWithCallback(callback) {
+async function loadCountryDataWithCallback(callback) {
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
     };
-    const response = fetch(`${apiURL}/v2/countries?key=${process.env.API_KEY}`, requestOptions);
+    let response = await fetch(`${apiURL}/v2/countries?key=${process.env.API_KEY}`, requestOptions);
  
-    callback(response, function(e) {
+    callback(response, function(result){
+        console.log(result);
+    }, function(e) {
         console.log(e);
     });      
 }
 
-function callbackFunc(response, failureCallback) {
+async function callbackFunc(response, callback, failureCallback) {
+    //console.log(response);
     if (!response.ok) {
         failureCallback(response.error);
     }
     else {
-        const result = response.text();
-        console.log(result);
+        let text = await response.text();
+        callback(text);
     }
 }
 
@@ -39,10 +42,10 @@ function loadCountryData() {
     return response;    
 }
 
-loadCountryData().then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error))
-  .finally(console.log('Done'));
+// loadCountryData().then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error))
+//   .finally(console.log('Done'));
 
 
 
